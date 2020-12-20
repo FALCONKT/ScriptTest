@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Boss
 {
+
     private int hp = 100;   // 体力
     private int power = 25; // 攻撃力
 
@@ -31,14 +32,18 @@ public class Boss
     {
         this.mp -= use_mp;
 
-        if (this.mp >= 0) {
+        if (this.mp >= 0)
+        {
             Debug.Log("魔法攻撃をした。残りMPは" + this.mp + "。");
         }
-        //else if(this.mp < 5 && this.mp > 0){
+        else if (this.mp < 5 && this.mp > 0) { 
+            Debug.Log("MPが足りないため魔法が使えない。");
+        }
         else{
             Debug.Log("MPが足りないため魔法が使えない。");
         }
     }
+
 
 }
 
