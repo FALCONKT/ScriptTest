@@ -12,7 +12,7 @@ public class Boss
     private int hp = 100;   // 体力
     private int power = 25; // 攻撃力
 
-    private int mp = 53;   //魔法力
+    private int mp = 5;   //魔法力
 
 
 
@@ -34,10 +34,13 @@ public class Boss
     public void Magic(int use_mp)
     {
         this.mp -= use_mp;
-        Debug.Log("魔法攻撃をした。残りMPは"+this.mp+"。");
 
-        if (this.mp < 5){
-            Debug.Log("MPが足りないため魔法が使えない。");            
+        if (this.mp >= 0){ 
+            Debug.Log("魔法攻撃をした。残りMPは"+this.mp+"。");
+        }
+
+        if (this.mp < 5 && this.mp > 0){
+            Debug.Log("MPが足りないため魔法が使えない。");           
         } 
 
 
@@ -78,16 +81,14 @@ public class Test : MonoBehaviour {
         battle.Attack();
         battle.Defence(3);
 
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
-        battle.Magic(5);
+        //回数10回をfor文で実現
+        for (int i =0; i < 10; i++)
+        {
+            battle.Magic(5);
+
+        }
+
+  
 
         battle.Attack();
         battle.Defence(3);
