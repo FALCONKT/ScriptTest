@@ -10,7 +10,7 @@ public class Boss
     private int hp = 100;   // 体力
     private int power = 25; // 攻撃力
 
-    private int mp = 3;   //魔法力
+    private int mp = -13;   //魔法力
 
 
     // 攻撃用の関数
@@ -31,17 +31,17 @@ public class Boss
     public void Magic(int use_mp)
     {
 
-        //mpが0より上の場合のみmpを消費するようにする。　mpが0以下の場合この代入は行われない。
-        if (mp > 0)
+        //mpが0より上の場合のみmpを消費するようにする。
+        //mpが0より大きければ減らす　×
+        //mpが0より大きければ減らす　=　mpが消費mp以上であれば減らす　〇
+        //条件式に設定する。 関数　に融合
+        if (this.mp >= use_mp)
         {
             this.mp -= use_mp;
-        }
-
-        if (this.mp >= 0)
-        {
             Debug.Log("魔法攻撃をした。残りMPは" + this.mp + "。");
         }
-        else if (this.mp < 5 && this.mp > 0) { 
+        //使用mpがmpより高いとき　→　mp使用不可
+        else if (this.mp < use_mp) { 
             Debug.Log("MPが足りないため魔法が使えない。");
         }
         else{
